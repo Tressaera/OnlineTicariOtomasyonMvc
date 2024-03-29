@@ -1,0 +1,60 @@
+﻿@using OnlineTicariOtomasyonMvc.Models.Siniflar
+@model List<Urun>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card mb-3">
+            <div class="card-header"><i class="fas fa-table"></i> Ürünler</div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Kategori</th>
+                            <th>Görsel</th>
+                            <th>Ürün Adı</th>
+                            <th>Marka</th>
+                            <th>Stok</th>
+                            <th>Alış Fiyatı</th>
+                            <th>Satış Fiyatı</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.UrunID</td>
+                                <td>@item.Kategori.KategoriAd</td>
+                                <td>@item.UrunGorsel</td>
+                                <td>@item.UrunAd</td>
+                                <td>@item.Marka</td>
+                                <td>@item.Stok</td>
+                                <td>@item.AlisFiyat</td>
+                                <td>@item.SatisFiyat</td>
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="/Urun/UrunGuncelle/@item.UrunID"><i class="fa fa-pen mx-0"></i> Güncelle</a>
+                                            <a class="dropdown-item" href="/Urun/UrunSil/@item.UrunID"><i class="fa fa-trash mx-0"></i> Sil</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a href="/Urun/UrunEkle" class="btn btn-outline-primary col-12">Yeni Ürün Oluştur!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
